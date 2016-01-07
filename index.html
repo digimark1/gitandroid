@@ -2602,12 +2602,12 @@ function update_shipments_load(load_id){
 														localStorage.drop_formatted_address = ''+data.results[0].formatted_address+'';
 													   }
 												 })
-											localStorage.pick_address = 'maps://?q='+''+localStorage.pickup_formatted_address+'';
+											localStorage.pick_address = 'geo://?q='+''+localStorage.pickup_formatted_address+'';
 											//pickup_add_2,drop_add_2
 											var pickup_add_1_1 = (localStorage.pickup_formatted_address).substring(0,(localStorage.pickup_formatted_address).indexOf(","));
 											var pickup_add_1_2 = (localStorage.pickup_formatted_address).substring((localStorage.pickup_formatted_address).indexOf(","));
 											$('#pickup_text').html(pickup_add_1_1+' - '+pickup_add_2+pickup_add_1_2);
-											localStorage.drop_address = 'maps://?q='+''+localStorage.drop_formatted_address+'';
+											localStorage.drop_address = 'geo://?q='+''+localStorage.drop_formatted_address+'';
 											var drop_add_1_1 = (localStorage.drop_formatted_address).substring(0,(localStorage.drop_formatted_address).indexOf(","));
 											var drop_add_1_2 = (localStorage.drop_formatted_address).substring((localStorage.drop_formatted_address).indexOf(","));
 											$('#drop_text').html(drop_add_1_1+' - '+drop_add_2+drop_add_1_2);
