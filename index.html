@@ -1954,12 +1954,11 @@ $('#div_document_name').click(function(){
 											
 					//-------------- SEND REGISTER ID TO DATABASE --- ANDROID CLOUD MESSAGING --- PUSH
 					setTimeout(function(){
-							    var reg = localStorage.reg;
-								var id = localStorage.test1;
-								
+							    //var reg = localStorage.reg;
+								//var id = localStorage.user_id;
 								$.ajax({
 									type: 'POST',
-									data: {reg_id: reg, driver_id: id},
+									data: {reg_id: localStorage.reg, driver_id: localStorage.user_id},
 									url: ''+localStorage.save_url+'/saveid.php',
 									success: function(data){
 										console.log(data);
