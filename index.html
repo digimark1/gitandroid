@@ -605,6 +605,7 @@ function shipper_take_pic(){
 												workplace: 'workplace'
 											}
 						var ft = new FileTransfer();
+						alert('before upload'+localStorage.load_id_bol+'_bol_'+localStorage.bol_number+'_sp-'+localStorage.shipper_counter);
 						ft.upload(imageURI, encodeURI(localStorage.save_url+"/save_picture.php"), win1, fail1, options);
                     //--- END OF - SAVE PICTURE TAKEN -----//
 										// ---- WIN - FAIL ----- SHIPPER save_picture.php --- //
