@@ -46,7 +46,7 @@
 					 localStorage.base_url = 'http://leanstaffing.com/trackngo';
 					 // Url to save data into database
 					 localStorage.save_url = 'http://leanstaffing.com/testserver2';
-					 localStorage.files = 'http://leanstaffing.com/tkgo_files2';
+					 localStorage.files = 'http://leanstaffing.com/tkgo_files';
 					 localStorage.load_hid;
 					 localStorage.load_id_bol;
 					 localStorage.start;
@@ -209,6 +209,7 @@
 					{
 						$("#app-status-ul").append('<li>REGISTERING -> REGID: \n\n' + '<div id="reg_id">' + e.regid +'</div>'+ "\n\n</li>");
 						$("#reg_id").html(e.regid);
+						localStorage.reg = $("#reg_id").html();
 						console.log("regID = " + e.regid);
 					}
                     break;
@@ -1279,47 +1280,32 @@ $('#div_document_name').click(function(){
 				
 		
 		$('#signout0, #signout0_2, #signout0_5, #signout1, #signout2, #signout3, #signout5, #signout6, #signout7').click(function(){
-			 function onConfirm(button){
-			   if(button == 1){
-				   	clean_apple_id();
-				   }else{
-					   }
-			}
-			 navigator.notification.confirm(
-			 	'Are you sure?',
-				onConfirm,
-				'Smith TracknGo',
-				['Yes','No']
-			 );
+			//var confirm_signout = confirm('Are you sure?')
+			   function onConfirm(confirm_signout) {
+					if(confirm_signout == 1){
+					   clean_android_id();
+					   }else{
+						   }
+				}
+				navigator.notification.confirm(
+					'Are you sure?',
+					onConfirm,
+					"Smith Trackn'Go",
+					['Yes','No']
+				);
 			});
-			
-		function signout_function(){
-			 function onConfirm(button){
-			   if(button == 1){
-				   	clean_apple_id();
-				   }else{
-					   }
-			}
-			 navigator.notification.confirm(
-			 	'Are you sure?',
-				onConfirm,
-				'Smith TracknGo',
-				['Yes','No']
-			 );
-			};
-			
 			
 		function alertCallback() {
 			 //Nothing but needed to make custom alerts work
 			}
 		// To clean APPLE Id from server and avoid future notifications
-		function clean_apple_id(){
+		function clean_android_id(){
 			                location.href ="#page0";
 							$.ajax({
 									type: 'POST',
 									//data: {token_device: token, driver_id: id},
 									data: {token_device: "", driver_id: localStorage.user_id},
-									url: ''+localStorage.save_url+'/saveid_apple.php',
+									url: ''+localStorage.save_url+'/saveid.php',
 									success: function(data){
 										console.log(data);
 										localStorage.removeItem('load_hid');
@@ -1966,23 +1952,22 @@ $('#div_document_name').click(function(){
 											$('#loading_loads').html(""); //--Delete Loading Gif when all loads are checked. -----/
 											$.mobile.loading("hide");
 											
-									//-------------- SEND REGISTER ID TO DATABASE --- ANDROID CLOUD MESSAGING --- PUSH
-									setTimeout(function(){
-										var token = localStorage.token; // $('#token_device_hid').html();
-										var id = localStorage.user_id;
-										$.ajax({
-											type: 'POST',
-											//data: {token_device: token, driver_id: id},
-											data: {token_device: token, driver_id: id},
-											async: false,
-											url: ''+localStorage.save_url+'/saveid_apple.php',
-											success: function(data){
-												console.log(data);
-											},
-											error: function(){
-												console.log(data);
-											}})			
-										},1000);
+					//-------------- SEND REGISTER ID TO DATABASE --- ANDROID CLOUD MESSAGING --- PUSH
+					setTimeout(function(){
+							    var reg = localStorage.reg;
+								var id = localStorage.test1;
+								$.ajax({
+									type: 'POST',
+									data: {reg_id: reg, driver_id: id},
+									url: 'http://leanstaffing.com/testserver/saveid.php',
+									success: function(data){
+										console.log(data);
+									},
+									error: function(){
+										console.log(data);
+									}});
+						},1000);		
+					//--------------------
 										//--------------------
 										//---trace load adjustments----
 									if(active_loads_number >= 1){
@@ -2681,7 +2666,7 @@ function update_shipments_load(load_id){
 			$('#troubles_msg').attr('class','');
 		    
 			$('#message_body').css('height',(0.36*parseFloat(window.screen.height)));
-		    $('#notification_message').css('height',(0.21*parseFloat(window.screen.height)));
+		    $('#notification_message').css('height',(0.17*parseFloat(window.screen.height)));
 			/*setTimeout(function () {
 									myScroll_message.refresh();
 										}, 500);*/
