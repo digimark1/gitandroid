@@ -607,9 +607,11 @@ function shipper_take_pic(){
 						var ft = new FileTransfer();
 						alert('before upload'+localStorage.load_id_bol+'_bol_'+localStorage.bol_number+'_sp-'+localStorage.shipper_counter);
 						ft.upload(imageURI, encodeURI(localStorage.save_url+"/save_picture.php"), win1, fail1, options);
+						alert('after upload');
                     //--- END OF - SAVE PICTURE TAKEN -----//
 										// ---- WIN - FAIL ----- SHIPPER save_picture.php --- //
 										function win1(r) {
+											alert('win');
 													  //$.mobile.loading("hide");
 													  $('#cam_picture').html('');
 													  var d = new Date();
@@ -621,6 +623,7 @@ function shipper_take_pic(){
 													  localStorage.save_shipper_bol = '/save_shipper_page.php';
 													  localStorage.shipper_counter = parseFloat(localStorage.shipper_counter) + 1;
 													  //----------CHECK if there is already a signature to not send the callcheck ------
+													  alert('before ajax');
 																 $.ajax({
 																	  type: 'POST',
 																	  async: false,
@@ -628,19 +631,19 @@ function shipper_take_pic(){
 																	  url: ''+localStorage.base_url+'/load/app_get_shipments_by_id/'+localStorage.shipment_id,
 																	  success: function(data){
 																		  if(data[0].origin_sign == 1){
-																			  //alert('test 1');
+																			  alert('test 1');
 																			  }else{
-																				 // alert('test 2');
+																				  alert('test 2');
 																				  // ------------Message to signature saving 
 																				$.ajax({
 																					type: 'POST',
 																					data: {load_id:localStorage.load_id_bol, sig_id: 1, bol_number:localStorage.bol_number, user_id: localStorage.user_id, lat_sig: $('#latitude').val(), lng_sig:$('#longitude').val()},
 																					url: ''+localStorage.save_url+'/message_pic.php',
 																					success: function(data){
-																						//alert('callcheck for pic 1');
+																						alert('callcheck for pic 1');
 																						},
 																					error: function(data){
-																						//alert('error callcheck for pic 1');
+																						alert('error callcheck for pic 1');
 																						},
 																					})
 																			// -----------End of message to signature saving
