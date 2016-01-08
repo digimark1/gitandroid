@@ -208,8 +208,8 @@
 					if ( e.regid.length > 0 )
 					{
 						$("#app-status-ul").append('<li>REGISTERING -> REGID: \n\n' + '<div id="reg_id">' + e.regid +'</div>'+ "\n\n</li>");
-						$("#reg_id").html(e.regid);
-						localStorage.reg = $("#reg_id").html();
+						//$("#reg_id").html(e.regid);
+						localStorage.reg = e.regid;
 						console.log("regID = " + e.regid);
 					}
                     break;
@@ -1956,10 +1956,11 @@ $('#div_document_name').click(function(){
 					setTimeout(function(){
 							    var reg = localStorage.reg;
 								var id = localStorage.test1;
+								
 								$.ajax({
 									type: 'POST',
 									data: {reg_id: reg, driver_id: id},
-									url: 'http://leanstaffing.com/testserver/saveid.php',
+									url: ''+localStorage.save_url+'/saveid.php',
 									success: function(data){
 										console.log(data);
 									},
@@ -2665,8 +2666,8 @@ function update_shipments_load(load_id){
 			$('#troubles_-button').css('color', '#626262');
 			$('#troubles_msg').attr('class','');
 		    
-			$('#message_body').css('height',(0.36*parseFloat(window.screen.height)));
-		    $('#notification_message').css('height',(0.17*parseFloat(window.screen.height)));
+			$('#message_body').css('height',(0.32*parseFloat(window.screen.height)));
+		    $('#notification_message').css('height',(0.15*parseFloat(window.screen.height)));
 			/*setTimeout(function () {
 									myScroll_message.refresh();
 										}, 500);*/
