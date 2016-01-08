@@ -616,10 +616,12 @@ function shipper_take_pic(){
 													  $('#cam_picture').html('');
 													  var d = new Date();
 													  $('#shipper_photos').append('<div><a style="color:blue; font-weight:500" href="#" onClick="view_picture_shipper('+localStorage.load_id_bol+','+localStorage.comma+localStorage.bol_number+localStorage.comma+','+localStorage.shipper_counter+')">-'+('0'+(d.getMonth()+1)).slice(-2)+'/'+('0'+(d.getDate()).slice(-2))+'/'+d.getFullYear()+'_'+localStorage.shipper_counter+'</a></div>');
+													  alert('first group');
 													  $('#expand_shipper').html('<b>&nbsp; - </b>Shipper BOL');
 													  $('#shipper_photos').show();
 													  //---- POP UP SHIPPER -----//
 													  $('#shp_sig_options').append('<div><a style="color:blue; font-weight:500" href="#" onClick="sign_picture_shipper('+localStorage.load_id_bol+','+localStorage.comma+localStorage.bol_number+localStorage.comma+','+localStorage.shipper_counter+')">-'+('0'+(d.getMonth()+1)).slice(-2)+'/'+('0'+(d.getDate()).slice(-2))+'/'+d.getFullYear()+'_'+localStorage.shipper_counter+'</a></div>');
+													  alert('second group');
 													  localStorage.save_shipper_bol = '/save_shipper_page.php';
 													  localStorage.shipper_counter = parseFloat(localStorage.shipper_counter) + 1;
 													  //----------CHECK if there is already a signature to not send the callcheck ------
