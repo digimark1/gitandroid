@@ -405,18 +405,22 @@ body :-ms-input-placeholder {
 				overflow-y:scroll;
 				height:300px;
 				}
+				#notification_message div{
+					display:inline-block;
+					width:100%;
+					}
 				.pdriver{
 					margin-top:2px;
 					margin-bottom:2px;
 					background:#DDDDDD;
 					float:right;
-					display:inline-block;
+					/*width:100%*/
 					}
 				.pmanager{
 					margin-top:2px;
 					margin-bottom:2px;
 					float:left;
-					display:inline-block;
+					/*width:100%*/
 					}
 				#bol_image{
 					/*margin-bottom:15px;*/
@@ -610,9 +614,7 @@ body :-ms-input-placeholder {
 					width:100%;
 					height: 130px;
 					overflow-y: scroll;
-					/*border: 1px solid #ccc;*/
-					border-left: 1px solid #CCC;
-                    border-right: 1px solid #CCC;
+					border: 1px solid #ccc;  
 					display:inline-block;
 				  }
 				  
